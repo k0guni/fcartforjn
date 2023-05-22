@@ -8,7 +8,7 @@ from adafruit_motor import motor
 i2c = busio.I2C(SCL_1, SDA_1)
 
 pca = PCA9685(i2c, address=0x40)
-pca.frequency = 100
+pca.frequency = 40000
 
 pca.channels[0].duty_cycle = 0xFFFF
 pca.channels[5].duty_cycle = 0xFFFF

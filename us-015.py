@@ -1,13 +1,13 @@
 import time
 import RPi.GPIO as GPIO
 
-# 超音波センサー(HC-SR04)制御クラス
+
 class Sensor1():
     def __init__(self):
-        self.__TRIG1 = 19 # 物理番号19
-        self.__ECHO1 = 21 # 物理番号21
+        self.__TRIG1 = 19
+        self.__ECHO1 = 21 
         GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD) # 物理ピン番号で指定
+        GPIO.setmode(GPIO.BOARD) 
         GPIO.setup(self.__TRIG1,GPIO.OUT)
         GPIO.setup(self.__ECHO1,GPIO.IN)
 
@@ -15,19 +15,19 @@ class Sensor1():
         GPIO.output(self.__TRIG1, GPIO.LOW)
         # TRIG = HIGH
         GPIO.output(self.__TRIG1, True)
-        # 0.01ms後に TRIG = LOW
+        # 0.01ms TRIG = LOW
         time.sleep(0.00001)        
         GPIO.output(self.__TRIG1, False)
 
         signaloff1=0
         signalon1=0
-        # 発射時間
+
         while GPIO.input(self.__ECHO1) == 0:
             signaloff1 = time.time()
-        # 到着時間
+
         while GPIO.input(self.__ECHO1) == 1:
             signalon1 = time.time()
-        # 距離計算
+
         return (signalon1 - signaloff1) * 17000
 
     def __del__(self):
@@ -35,10 +35,10 @@ class Sensor1():
 
 class Sensor2():
     def __init__(self):
-        self.__TRIG2 = 22 # 物理番号19
-        self.__ECHO2 = 37 # 物理番号21
+        self.__TRIG2 = 22 
+        self.__ECHO2 = 37 
         GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD) # 物理ピン番号で指定
+        GPIO.setmode(GPIO.BOARD) 
         GPIO.setup(self.__TRIG2,GPIO.OUT)
         GPIO.setup(self.__ECHO2,GPIO.IN)
 
@@ -46,19 +46,19 @@ class Sensor2():
         GPIO.output(self.__TRIG2, GPIO.LOW)
         # TRIG = HIGH
         GPIO.output(self.__TRIG2, True)
-        # 0.01ms後に TRIG = LOW
+        # 0.01ms TRIG = LOW
         time.sleep(0.00001)        
         GPIO.output(self.__TRIG2, False)
 
         signaloff2=0
         signalon2=0
-        # 発射時間
+        
         while GPIO.input(self.__ECHO2) == 0:
             signaloff2 = time.time()
-        # 到着時間
+        
         while GPIO.input(self.__ECHO2) == 1:
             signalon2 = time.time()
-        # 距離計算
+        
         return (signalon2 - signaloff2) * 17000
 
     def __del__(self):
@@ -66,10 +66,10 @@ class Sensor2():
 
 class Sensor3():
     def __init__(self):
-        self.__TRIG3 = 33 # 物理番号19
-        self.__ECHO3 = 35 # 物理番号21
+        self.__TRIG3 = 33 
+        self.__ECHO3 = 35 
         GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD) # 物理ピン番号で指定
+        GPIO.setmode(GPIO.BOARD) 
         GPIO.setup(self.__TRIG3,GPIO.OUT)
         GPIO.setup(self.__ECHO3,GPIO.IN)
 
@@ -77,19 +77,19 @@ class Sensor3():
         GPIO.output(self.__TRIG3, GPIO.LOW)
         # TRIG = HIGH
         GPIO.output(self.__TRIG3, True)
-        # 0.01ms後に TRIG = LOW
+        # 0.01ms TRIG = LOW
         time.sleep(0.00001)        
         GPIO.output(self.__TRIG3, False)
 
         signaloff3=0
         signalon3=0
-        # 発射時間
+        
         while GPIO.input(self.__ECHO3) == 0:
             signaloff3 = time.time()
-        # 到着時間
+        
         while GPIO.input(self.__ECHO3) == 1:
             signalon3 = time.time()
-        # 距離計算
+        
         return (signalon3 - signaloff3) * 17000
 
     def __del__(self):
@@ -97,10 +97,10 @@ class Sensor3():
 
 class Sensor4():
     def __init__(self):
-        self.__TRIG4 = 16 # 物理番号19
-        self.__ECHO4 = 15 # 物理番号21
+        self.__TRIG4 = 16 
+        self.__ECHO4 = 15 
         GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD) # 物理ピン番号で指定
+        GPIO.setmode(GPIO.BOARD) 
         GPIO.setup(self.__TRIG4,GPIO.OUT)
         GPIO.setup(self.__ECHO4,GPIO.IN)
 
@@ -108,19 +108,19 @@ class Sensor4():
         GPIO.output(self.__TRIG4, GPIO.LOW)
         # TRIG = HIGH
         GPIO.output(self.__TRIG4, True)
-        # 0.01ms後に TRIG = LOW
+        # 0.01ms TRIG = LOW
         time.sleep(0.00001)        
         GPIO.output(self.__TRIG4, False)
 
         signaloff4=0
         signalon4=0
-        # 発射時間
+        
         while GPIO.input(self.__ECHO4) == 0:
             signaloff4 = time.time()
-        # 到着時間
+        
         while GPIO.input(self.__ECHO4) == 1:
             signalon4 = time.time()
-        # 距離計算
+        
         return (signalon4 - signaloff4) * 17000
 
     def __del__(self):
@@ -128,10 +128,10 @@ class Sensor4():
 
 class Sensor5():
     def __init__(self):
-        self.__TRIG5 = 31 # 物理番号19
-        self.__ECHO5 = 32 # 物理番号21
+        self.__TRIG5 = 31 
+        self.__ECHO5 = 32 
         GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD) # 物理ピン番号で指定
+        GPIO.setmode(GPIO.BOARD) 
         GPIO.setup(self.__TRIG5,GPIO.OUT)
         GPIO.setup(self.__ECHO5,GPIO.IN)
 
@@ -139,19 +139,19 @@ class Sensor5():
         GPIO.output(self.__TRIG5, GPIO.LOW)
         # TRIG = HIGH
         GPIO.output(self.__TRIG5, True)
-        # 0.01ms後に TRIG = LOW
+        # 0.01ms TRIG = LOW
         time.sleep(0.00001)        
         GPIO.output(self.__TRIG5, False)
 
         signaloff5=0
         signalon5=0
-        # 発射時間
+        
         while GPIO.input(self.__ECHO5) == 0:
             signaloff5 = time.time()
-        # 到着時間
+        
         while GPIO.input(self.__ECHO5) == 1:
             signalon5 = time.time()
-        # 距離計算
+        
         return (signalon5 - signaloff5) * 17000
 
     def __del__(self):
