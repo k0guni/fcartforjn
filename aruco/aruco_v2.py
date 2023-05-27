@@ -1,12 +1,16 @@
-#0427
+#2023--
+#TUK Mechatronics 2018130002 KoGeonHui
+#refer to - python 3.6.9
+#use for - aruco detect pose, distance
+
 from imutils.video import VideoStream
 import argparse
 import imutils
 import time
-import cv2
+import cv2 # ver 3.4.18.65
 import sys
 import json
-import numpy as np
+import numpy as np # ver 1.19.4
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-t", "--type", type=str,
