@@ -163,15 +163,15 @@ def main():
     sensor2 = Sensor2()
     sensor3 = Sensor3()
     sensor4 = Sensor4()
-    sensor5 = Sensor5()
-
+    #sensor5 = Sensor5()
     while True:
+        
         distance1 = sensor1.getDistance()
         distance2 = sensor2.getDistance()
         distance3 = sensor3.getDistance()
         distance4 = sensor4.getDistance()
-        distance5 = sensor5.getDistance()
-        print("dis1:{:.0f}cm | dis2:{:.0f}cm | dis3:{:.0f}cm | dis4:{:.0f}cm | dis5:{:.0f}cm".format(distance1, distance2, distance3, distance4, distance5))
+        #distance5 = sensor5.getDistance()
+        print("dis1:{:.0f}cm | dis2:{:.0f}cm | dis3:{:.0f}cm | dis4:{:.0f}cm | dis5:{:.0f}cm".format(distance1, distance2, distance3, distance4))
 #        print("{:.0f}cm".format(distance2))
 
         time.sleep(0.1)
@@ -179,7 +179,7 @@ def main():
     del sensor2
     del sensor3
     del sensor4
-    del sensor5
+#    del sensor5
 
 if __name__ == '__main__':
     main()
