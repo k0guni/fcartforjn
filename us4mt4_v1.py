@@ -1,8 +1,8 @@
 
 #2023-05-26
 #TUK Mechatronics 2018130002 KoGeonHui
-#refer to -
-#use for - 4 motor with 1 us 
+#refer to - test
+#use for - 4 motor with 4 us 
 
 
 import time
@@ -16,6 +16,7 @@ from adafruit_pca9685 import PCA9685
 i2c = busio.I2C(SCL_1, SDA_1)
 
 pca = PCA9685(i2c, address=0x40)
+#pca.frquency max 1526 min 24 hz
 pca.frequency = 100
 
 pwm_channel = 0
@@ -66,10 +67,12 @@ def motor(speed, i):
     elif speed > 0:
         pca.channels[dir_channel+4*i].duty_cycle = int(0xffff)
         pca.channels[brk_channel+4*i].duty_cycle = int(0x0000)
+        #pca.channels[pwm_channel+4*i].duty_cycle = int(-speed/100 * 0xffff)
         pca.channels[pwm_channel+4*i].duty_cycle = 0x1fff
     else:
         pca.channels[dir_channel+4*i].duty_cycle = int(0x0000)
         pca.channels[brk_channel+4*i].duty_cycle = int(0x0000)
+        #pca.channels[pwm_channel+4*i].duty_cycle = int(-speed/100 * 0xffff)
         pca.channels[pwm_channel+4*i].duty_cycle = 0x1fff
 
 def forward(speed):
@@ -111,19 +114,26 @@ def stop():
 def main():
     sensors = [
         Sensor(board.D10,board.D9),
-        #Sensor(22,37),
-        #Sensor(33,35),
-        #Sensor(16,15),
-        #Sensor(31,32)         
+        #Sensor(board.D25,board.D26),
+        #Sensor(board.D13,board.D19),
+        #Sensor(board.D23,board.D22),
+        #Sensor(board.D6,board.D12)         
     ]
     while True:
-        distance = sensors[0].getDistance()
-        if distance <= 30 :
-            stop()
+        distances = [sensor.getDistance() for sensor in sensors]
+        if distances[0] <= 30:
+            while distances[1]!=distances[0]:
+                cw(5)
+                time.sleep(0.1)
             time.sleep(1)
             continue        
-        forward(30)
-        print(distance)
+        elif distances[3] <= 30:
+            while distances[3]!=distance[2]:
+                ccw(5)
+                time.sleep(0.1)
+            time.sleep(1)
+            continue
+        forward(5)
         #time.sleep(0.1)
     for sensor in sensors:
         del sensor

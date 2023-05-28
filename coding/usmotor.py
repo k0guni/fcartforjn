@@ -1,7 +1,7 @@
 
 #2023-05-26
 #TUK Mechatronics 2018130002 KoGeonHui
-#refer to -
+#refer to - success
 #use for - 4 motor with 1 us 
 
 
@@ -16,6 +16,7 @@ from adafruit_pca9685 import PCA9685
 i2c = busio.I2C(SCL_1, SDA_1)
 
 pca = PCA9685(i2c, address=0x40)
+#pca.frquency max 1526 min 24 hz
 pca.frequency = 100
 
 pwm_channel = 0
@@ -100,8 +101,8 @@ def cw(speed):
 def ccw(speed):
     motor(speed,0)
     motor(speed,1)
-    motor(speed,2)
-    motor(speed,3)
+    motor(-1*-speed,2)
+    motor(-1*-speed,3)
 def stop():
     motor(0,0)
     motor(0,1)

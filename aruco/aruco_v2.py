@@ -97,8 +97,6 @@ while True:
 
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
-	cv2.imshow("Frame", frame)
-	key = cv2.waitKey(1) & 0xFF
 
 	if key == ord("q"):
 		break
